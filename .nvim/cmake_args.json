@@ -1,0 +1,16 @@
+{
+  "default": {
+    "args": [
+      "-DCMAKE_EXPORT_COMPILE_COMMANDS=1",
+      "-DCMAKE_BUILD_TYPE=Debug"
+    ]
+  },
+  "projects": {
+    "example_project": {
+      "args": [
+        "-DENABLE_TESTS=ON",
+        "-DBUILD_SHARED_LIBS=ON"
+      ]
+    }
+  }
+}

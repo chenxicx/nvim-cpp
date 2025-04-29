@@ -3,7 +3,40 @@ return {
     "Civitasv/cmake-tools.nvim",
     lazy = false,
     config = function()
-      require("cmake-tools").setup {}
+      -- 读取 JSON 配置文件中的 CMake 参数
+      local function get_cmake_args()
+        local json_file = vim.fn.stdpath("config") .. "/.nvim/cmake_args.json"
+        local args = {}
+
+        -- 检查文件是否存在
+        if vim.fn.filereadable(json_file) == 1 then
+          local content = vim.fn.readfile(json_file)
+          local decoded = vim.fn.json_decode(table.concat(content, "\n"))
+          
+          if decoded and decoded.default and decoded.default.args then
+            -- 添加默认参数
+            for _, arg in ipairs(decoded.default.args) do
+              table.insert(args, arg)
+            end
+          end
+          
+          -- 检查是否有特定项目的配置
+          if decoded and decoded.projects then
+            local current_dir = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
+            if decoded.projects[current_dir] and decoded.projects[current_dir].args then
+              for _, arg in ipairs(decoded.projects[current_dir].args) do
+                table.insert(args, arg)
+              end
+            end
+          end
+        end
+        
+        return args
+      end
+      
+      require("cmake-tools").setup {
+        cmake_generate_options = get_cmake_args(),
+      }
       
       -- CMake 快捷键设置
       local keymap = vim.keymap.set
