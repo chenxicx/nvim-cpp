@@ -3,40 +3,9 @@ return {
     "Civitasv/cmake-tools.nvim",
     lazy = false,
     config = function()
-      -- 读取 JSON 配置文件中的 CMake 参数
-      local function get_cmake_args()
-        local json_file = vim.fn.stdpath("config") .. "/.nvim/cmake_args.json"
-        local args = {}
-
-        -- 检查文件是否存在
-        if vim.fn.filereadable(json_file) == 1 then
-          local content = vim.fn.readfile(json_file)
-          local decoded = vim.fn.json_decode(table.concat(content, "\n"))
-          
-          if decoded and decoded.default and decoded.default.args then
-            -- 添加默认参数
-            for _, arg in ipairs(decoded.default.args) do
-              table.insert(args, arg)
-            end
-          end
-          
-          -- 检查是否有特定项目的配置
-          if decoded and decoded.projects then
-            local current_dir = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
-            if decoded.projects[current_dir] and decoded.projects[current_dir].args then
-              for _, arg in ipairs(decoded.projects[current_dir].args) do
-                table.insert(args, arg)
-              end
-            end
-          end
-        end
-        
-        return args
-      end
+      require("cmake-tools").setup {}
       
-      require("cmake-tools").setup {
-        cmake_generate_options = get_cmake_args(),
-      }
+      --运行CMakeSettings设置
       
       -- CMake 快捷键设置
       local keymap = vim.keymap.set
@@ -54,7 +23,7 @@ return {
       keymap("n", "<leader>cs", "<cmd>CMakeSelectBuildType<CR>", { desc = "选择构建类型", unpack(opts) })
       keymap("n", "<leader>ct", "<cmd>CMakeSelectBuildTarget<CR>", { desc = "选择构建目标", unpack(opts) })
       keymap("n", "<leader>cl", "<cmd>CMakeSelectLaunchTarget<CR>", { desc = "选择运行目标", unpack(opts) })
-      keymap("n", "<leader>co", "<cmd>CMakeOpen<CR>", { desc = "打开 CMake 控制台", unpack(opts) })
+      keymap("n", "<leader>co", "<cmd>copen<CR>", { desc = "打开 CMake 控制台", unpack(opts) })
       keymap("n", "<leader>ci", "<cmd>CMakeInstall<CR>", { desc = "安装 CMake 项目", unpack(opts) })
     end
   }
