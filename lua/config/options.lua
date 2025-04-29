@@ -31,4 +31,6 @@ else
     })
     -- 立即应用高亮设置
     vim.api.nvim_set_hl(0, "CursorLine", { bg = "#505050" })
+    vim.g.autoformat = false 
+    vim.g.autoformat_on_save = true
 end
