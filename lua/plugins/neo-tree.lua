@@ -9,10 +9,11 @@ return {
         hide_gitignored = false, -- 当设置为 false 时，不再隐藏 .gitignore 中列出的文件
         hide_hidden = false, -- 当设置为 false 时，不隐藏操作系统设置为隐藏的文件
       },
-      -- 其他 Neo-tree 配置保持不变
+      -- 添加符号链接支持
       follow_current_file = true,
-      group_empty_dirs = false,
+      follow_symlinks = true, -- 设置为 true，以便跟踪符号链接
       use_libuv_file_watcher = true,
+      group_empty_dirs = false,
     },
     -- 保留默认的窗口配置
     window = {
@@ -29,6 +30,9 @@ return {
         folder_closed = "",
         folder_open = "",
         folder_empty = "",
+      },
+      symlink_target = {
+        enabled = true, -- 显示符号链接的目标路径
       },
     },
   },
