@@ -1,14 +1,14 @@
 -- 安装 onedark 主题并设置为默认
 return {
   {
-    "olimorris/onedarkpro.nvim",
-    priority = 1000, -- Ensure it loads first
-    opts = {
-      theme = "onedark_dark", -- 设置为 One Dark Vivid 主题
-    },
-    config = function(_, opts)
-      require("onedarkpro").setup(opts)
-      vim.cmd.colorscheme("onedark_dark")
+    "navarasu/onedark.nvim",
+    priority = 1000, -- make sure to load this before all the other start plugins
+    config = function()
+      require("onedark").setup({
+        style = "deep",
+      })
+      -- Enable theme
+      require("onedark").load()
     end,
   },
 }
