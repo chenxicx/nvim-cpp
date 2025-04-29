@@ -15,6 +15,7 @@ return {
               -- 不在这里指定compile_commands.json路径，将通过on_new_config处理
               "--all-scopes-completion",
               "--log=verbose",
+              "--inlay-hints=false", -- 禁用内联提示，包括参数名称
             }
           end,
           root_dir = function(fname)
@@ -96,7 +97,25 @@ return {
               server = opts,
               extensions = {
                 autoSetHints = false,
-                inlay_hints = { inline = false },
+                inlay_hints = {
+                  inline = false,
+                  -- 完全禁用参数名称提示
+                  parameters = false,
+                  -- 完全禁用类型提示
+                  types = false,
+                  -- 禁用其他类型的提示
+                  only_current_line = false,
+                  only_current_line_autocmd = "CursorHold",
+                  show_parameter_hints = false,
+                  parameter_hints_prefix = "",
+                  other_hints_prefix = "",
+                  max_len_align = false,
+                  max_len_align_padding = 1,
+                  right_align = false,
+                  right_align_padding = 7,
+                  highlight = "Comment",
+                  priority = 100,
+                },
                 ast = {
                   role_icons = {
                     type = "🄣", declaration = "🄓", expression = "🄔",

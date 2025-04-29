@@ -14,7 +14,7 @@ else
         -- 设置字体大小为14
         vim.o.guifont = "JetBrainsMono Nerd Font:h18" -- text below applies for VimScript
         -- 设置行间距为1.2
-        vim.opt.linespace = 6
+        vim.opt.linespace = 10
         -- 禁用鼠标动画
         vim.g.neovide_cursor_animation_length = 0
         -- 高亮当前行
