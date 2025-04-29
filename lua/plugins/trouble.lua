@@ -5,10 +5,16 @@ return {
     -- 默认配置，您可以根据需要调整
     position = "bottom", -- 在底部显示
     height = 10, -- 高度为10行
-    icons = true,
+    icons = {
+      error = "",
+      warning = "",
+      hint = "",
+      information = "",
+      other = "",
+      fold_open = "", -- 图标：打开的文件夹
+      fold_closed = "", -- 图标：关闭的文件夹
+    },
     mode = "workspace_diagnostics", -- 默认模式为工作区诊断
-    fold_open = "", -- 图标：打开的文件夹
-    fold_closed = "", -- 图标：关闭的文件夹
     group = true, -- 按文件分组
     padding = true, -- 添加额外的填充
     action_keys = {
