@@ -36,12 +36,13 @@ return {
             -- 构建基于当前工作区的路径
             local compile_commands_paths = {
               new_root_dir .. "/compile_commands.json",
+              new_root_dir .. "/out/Debug/compile_commands.json",
+              new_root_dir .. "/out/Release/compile_commands.json",
               new_root_dir .. "/vs-build/compile_commands.json",
               new_root_dir .. "/build/compile_commands.json",
               new_root_dir .. "/Build/compile_commands.json",
               new_root_dir .. "/cmake-build-debug/compile_commands.json",
               new_root_dir .. "/cmake-build-release/compile_commands.json",
-              new_root_dir .. "/out/build/compile_commands.json",
             }
             
             -- 检查哪个路径存在，并使用第一个找到的路径
@@ -65,8 +66,6 @@ return {
                 table.insert(cmd, "--compile-commands-dir=" .. command_dir)
                 new_config.cmd = cmd
                 
-                -- 记录找到的编译命令
-                vim.notify("clangd: 使用编译数据库: " .. path, vim.log.levels.INFO)
                 break
               end
             end
@@ -85,13 +84,6 @@ return {
             new_config.init_options.offsetEncoding = "utf-8"
           end
 
-          -- 调整Vim的hover处理，确保禁用
-          vim.api.nvim_create_autocmd("FileType", {
-            pattern = {"c", "cpp", "objc", "objcpp", "cuda"},
-            callback = function()
-              vim.bo.keywordprg = ":lua print('Hover已禁用')"
-            end,
-          })
           
           -- 手动设置clangd
           local lspconfig = require("lspconfig")
@@ -116,7 +108,7 @@ return {
                     TemplateTemplateParm = "🅃", TemplateParamObject = "🅃",
                   },
                 },
-                hover = { enabled = false },
+                hover = { enabled = true},
               }
             })
           end
