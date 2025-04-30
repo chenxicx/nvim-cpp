@@ -10,7 +10,10 @@ return {
         hide_hidden = false, -- 当设置为 false 时，不隐藏操作系统设置为隐藏的文件
       },
       -- 添加符号链接支持
-      follow_current_file = true,
+      follow_curruent_file = {
+        enabled = true, -- 启用当前文件跟踪
+        leavaue_dirs_open = true, -- 保持目录打开状态
+      },
       follow_symlinks = true, -- 设置为 true，以便跟踪符号链接
       use_libuv_file_watcher = true,
       group_empty_dirs = false,
