@@ -1,6 +1,7 @@
 return {
     "saghen/blink.cmp",
     dependencies = {
+      "zbirenbaum/copilot.lua",  -- 明确添加依赖关系
       {
         "giuxtaposition/blink-cmp-copilot",
       },
