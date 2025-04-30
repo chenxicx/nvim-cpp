@@ -40,6 +40,7 @@
   "overseer.nvim": { "branch": "master", "commit": "72c68aab0358c92f451168b704c411c4a3e3410e" },
   "persistence.nvim": { "branch": "main", "commit": "166a79a55bfa7a4db3e26fc031b4d92af71d0b51" },
   "plenary.nvim": { "branch": "master", "commit": "857c5ac632080dba10aae49dba902ce3abf91b35" },
+  "popup.nvim": { "branch": "master", "commit": "b7404d35d5d3548a82149238289fa71f7f6de4ac" },
   "project.nvim": { "branch": "main", "commit": "8c6bad7d22eef1b71144b401c9f74ed01526a4fb" },
   "refactoring.nvim": { "branch": "master", "commit": "2be7ea3f10b7e59658f5abf6dffc50b5d61964d6" },
   "render-markdown.nvim": { "branch": "main", "commit": "7f81e9dcc15504c044f20df39d28a590cd5c6ca5" },
@@ -50,5 +51,6 @@
   "tokyonight.nvim": { "branch": "main", "commit": "057ef5d260c1931f1dffd0f052c685dcd14100a3" },
   "trouble.nvim": { "branch": "main", "commit": "85bedb7eb7fa331a2ccbecb9202d8abba64d37b3" },
   "ts-comments.nvim": { "branch": "main", "commit": "1bd9d0ba1d8b336c3db50692ffd0955fe1bb9f0c" },
+  "vs-tasks.nvim": { "branch": "main", "commit": "7b5b87b838acfe996c2d71f27d4a7df200a3cc7a" },
   "which-key.nvim": { "branch": "main", "commit": "370ec46f710e058c9c1646273e6b225acf47cbed" }
 }
