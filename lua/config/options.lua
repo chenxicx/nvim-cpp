@@ -34,4 +34,10 @@ else
     vim.g.autoformat = false 
     vim.g.autoformat_on_save = true
     vim.g.inlay_hints = false
+    
+    -- 允许命令行模式使用系统剪贴板
+    -- 设置 Ctrl+v 在命令行模式下粘贴系统剪贴板内容
+    vim.keymap.set("c", "<C-v>", "<C-r>+", { desc = "粘贴系统剪贴板内容" })
+    -- 设置 Ctrl+Shift+v 在命令行模式下粘贴系统剪贴板内容（某些终端可能需要这个）
+    vim.keymap.set("c", "<C-S-v>", "<C-r>+", { desc = "粘贴系统剪贴板内容" })
 end
