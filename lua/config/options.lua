@@ -40,4 +40,15 @@ else
     vim.keymap.set("c", "<C-v>", "<C-r>+", { desc = "粘贴系统剪贴板内容" })
     -- 设置 Ctrl+Shift+v 在命令行模式下粘贴系统剪贴板内容（某些终端可能需要这个）
     vim.keymap.set("c", "<C-S-v>", "<C-r>+", { desc = "粘贴系统剪贴板内容" })
+    
+    -- C++代码缩进设置为4个空格
+    vim.api.nvim_create_autocmd("FileType", {
+        pattern = { "cpp", "c", "h", "hpp" },
+        callback = function()
+            vim.bo.tabstop = 4
+            vim.bo.shiftwidth = 4
+            vim.bo.expandtab = true
+            vim.bo.softtabstop = 4
+        end,
+    })
 end
