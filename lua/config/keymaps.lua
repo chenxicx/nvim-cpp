@@ -6,6 +6,11 @@ if vim.g.vscode then
   return true
 end
 
+-- 添加lazygit快捷键
+vim.keymap.set("n", "<leader>gg", function()
+  vim.cmd("term lazygit")
+end, { desc = "打开 lazygit" })
+
 -- 添加格式化选中代码的快捷键
 vim.keymap.set("v", "<leader>cf", function()
   local start_row, _ = unpack(vim.api.nvim_buf_get_mark(0, "<"))
