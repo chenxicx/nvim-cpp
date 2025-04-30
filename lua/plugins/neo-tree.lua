@@ -9,8 +9,11 @@ return {
         hide_gitignored = false, -- 当设置为 false 时，不再隐藏 .gitignore 中列出的文件
         hide_hidden = false, -- 当设置为 false 时，不隐藏操作系统设置为隐藏的文件
       },
-      -- 添加符号链接支持
-      follow_current_file = true,
+      -- 更新后的符号链接支持配置
+      follow_curruautoq qq qqent_file = {
+        enabled = true, -- 启用当前文件跟踪
+        leavauautoq qq qqe_dirs_open = true, -- 保持目录打开状态
+      },
       follow_symlinks = true, -- 设置为 true，以便跟踪符号链接
       use_libuv_file_watcher = true,
       group_empty_dirs = false,
@@ -19,7 +22,7 @@ return {
     window = {
       position = "left",
       width = 30,
-      mapping_options = {
+      mapping_options = {auautoq qq qq
         noremap = true,
         nowait = true,
       },
