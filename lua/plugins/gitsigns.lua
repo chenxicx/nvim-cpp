@@ -9,14 +9,5 @@ return {
       ignore_whitespace = false,
     },
     current_line_blame_formatter = "<author>, <author_time:%Y-%m-%d> - <summary>",
-  },
-  -- 添加自定义键映射
-  config = function(_, opts)
-    require("gitsigns").setup(opts)
-    
-    -- 添加切换git blame显示的快捷键
-    vim.keymap.set("n", "<leader>gb", function()
-      vim.cmd("Gitsigns toggle_current_line_blame")
-    end, { desc = "切换行间 Git Blame" })
-  end,
+  }
 }
