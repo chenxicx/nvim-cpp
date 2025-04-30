@@ -14,7 +14,6 @@ return {
               "--completion-style=detailed",
               -- 不在这里指定compile_commands.json路径，将通过on_new_config处理
               "--all-scopes-completion",
-              "--log=verbose",
               "--inlay-hints=false", -- 禁用内联提示，包括参数名称
             }
           end,

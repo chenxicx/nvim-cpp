@@ -33,4 +33,5 @@ else
     vim.api.nvim_set_hl(0, "CursorLine", { bg = "#505050" })
     vim.g.autoformat = false 
     vim.g.autoformat_on_save = true
+    vim.g.inlay_hints = false
 end

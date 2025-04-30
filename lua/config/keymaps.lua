@@ -2,6 +2,10 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 
+if vim.g.vscode then
+  return true
+end
+
 -- 添加格式化选中代码的快捷键
 vim.keymap.set("v", "<leader>cf", function()
   local start_row, _ = unpack(vim.api.nvim_buf_get_mark(0, "<"))
