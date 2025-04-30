@@ -7,7 +7,7 @@ return {
     },
     opts = {
       sources = {
-        default = { "lsp", "path", "snippets", "buffer", "copilot" },
+        default = {"copilot", "lsp", "path", "snippets", "buffer"},
         providers = {
           copilot = {
             name = "copilot",
