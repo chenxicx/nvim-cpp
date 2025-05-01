@@ -2,12 +2,5 @@ return {
   "lewis6991/gitsigns.nvim",
   opts = {
     current_line_blame = true, -- 显示当前行的git blame信息
-    current_line_blame_opts = {
-      virt_text = true,
-      virt_text_pos = "eol", -- 在行尾显示
-      delay = 300, -- 显示前的延迟（毫秒）
-      ignore_whitespace = false,
-    },
-    current_line_blame_formatter = "<author>, <author_time:%Y-%m-%d> - <summary>",
   }
 }
