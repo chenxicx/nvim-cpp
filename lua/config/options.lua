@@ -8,7 +8,7 @@ else
     -- 禁用相对行号，只使用绝对行号
     vim.opt.relativenumber = false
     vim.opt.number = true  -- 保留绝对行号
-    
+
     -- 如果运行的是Neovide，设置特定的字体大小和行间距
     if vim.g.neovide then
         -- 设置字体大小为14
@@ -20,7 +20,7 @@ else
         -- 高亮当前行
         vim.opt.cursorline = true
     end
-    
+
     -- 设置当前行高亮颜色为浅灰色
     vim.opt.cursorline = true
     vim.api.nvim_create_autocmd("ColorScheme", {
@@ -34,13 +34,13 @@ else
     vim.g.autoformat = false 
     vim.g.autoformat_on_save = true
     vim.g.inlay_hints = false
-    
+
     -- 允许命令行模式使用系统剪贴板
     -- 设置 Ctrl+v 在命令行模式下粘贴系统剪贴板内容
     vim.keymap.set("c", "<C-v>", "<C-r>+", { desc = "粘贴系统剪贴板内容" })
     -- 设置 Ctrl+Shift+v 在命令行模式下粘贴系统剪贴板内容（某些终端可能需要这个）
     vim.keymap.set("c", "<C-S-v>", "<C-r>+", { desc = "粘贴系统剪贴板内容" })
-    
+
     -- C++代码缩进设置为4个空格
     vim.api.nvim_create_autocmd("FileType", {
         pattern = { "cpp", "c", "h", "hpp" },
@@ -57,3 +57,4 @@ end
 vim.g.copilot_no_tab_map = true
 vim.g.copilot_enabled = false
 vim.g.copilot_assume_mapped = true
+vim.opt.termguicolors = true
