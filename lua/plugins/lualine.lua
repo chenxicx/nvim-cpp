@@ -27,6 +27,9 @@ return {
         lualine_b = {'branch', 'diff', 'diagnostics'},
         lualine_c = {
           {
+            function()
+              return require('auto-session.lib').current_session_name(true)
+            end,
             'filename',
             path = 1,         -- Show relative path
             file_status = true, -- Show file status
