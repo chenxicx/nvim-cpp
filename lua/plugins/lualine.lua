@@ -1,6 +1,7 @@
 -- filepath: /home/cx/.config/nvim/lua/plugins/lualine.lua
 return {
   "nvim-lualine/lualine.nvim",
+  { 'AndreM222/copilot-lualine' },
   event = "VeryLazy",
   opts = function()
     -- Function to fetch cmake-tools status
@@ -48,7 +49,7 @@ return {
           },
           cmake_status
         },
-        lualine_x = {'encoding', 'fileformat', 'filetype'},
+        lualine_x = {'copilot', 'encoding', 'fileformat', 'filetype'},
         lualine_y = {'progress'},
         lualine_z = {'location'}
       },
