@@ -16,6 +16,9 @@ return
   'sharpchen/Eva-Theme.nvim',
   lazy = false,
   priority = 1000,
+  config = function()
+    vim.cmd("colorscheme Eva-Dark")
+  end,
 --  build = ':EvaCompile'
 }
 
