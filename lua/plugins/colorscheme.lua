@@ -1,5 +1,5 @@
 return
-{
+--[[{
   "olimorris/onedarkpro.nvim",
   priority = 1000, -- Ensure it loads first
   config = function()
@@ -11,5 +11,11 @@ return
     -- 设置主题为 onedark_vivid
     vim.cmd("colorscheme onedark_vivid")
   end,
+}]]--
+{
+  'sharpchen/Eva-Theme.nvim',
+  lazy = false,
+  priority = 1000,
+--  build = ':EvaCompile'
 }
 
