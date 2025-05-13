@@ -31,7 +31,9 @@ else
     })
     -- 立即应用高亮设置
     vim.api.nvim_set_hl(0, "CursorLine", { bg = "#505050" })
-    vim.g.autoformat = false 
+
+    -- format
+    vim.g.autoformat = false
     vim.g.autoformat_on_save = true
     vim.g.inlay_hints = false
 
@@ -51,16 +53,16 @@ else
             vim.bo.softtabstop = 4
         end,
     })
-    
+
     -- 配置自动缩进
     vim.opt.autoindent = true  -- 启用自动缩进
     vim.opt.smartindent = true -- 智能缩进
     vim.opt.cindent = true     -- C语言风格缩进
-    
+
     -- 确保新行匹配当前行缩进
     vim.opt.copyindent = true  -- 复制前一行的缩进
     vim.opt.preserveindent = true -- 尽可能保留现有的缩进结构
-    
+
     -- 设置缩进选项，对所有文件类型生效
     vim.opt.expandtab = true   -- 使用空格代替Tab
     vim.opt.shiftwidth = 4     -- 默认缩进空格数
