@@ -38,5 +38,11 @@ return {
         enabled = true, -- 显示符号链接的目标路径
       },
     },
+    source_selector = {
+        sources = {
+          { source = "filesystem", args = { path = vim.fn.getcwd() } }
+        },
+        enable = false,
+      },
   },
 }
