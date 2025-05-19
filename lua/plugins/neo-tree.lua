@@ -10,9 +10,9 @@ return {
         hide_hidden = false, -- 当设置为 false 时，不隐藏操作系统设置为隐藏的文件
       },
       -- 添加符号链接支持
-      follow_curruent_file = {
+      follow_current_file = {
         enabled = true, -- 启用当前文件跟踪
-        leavaue_dirs_open = true, -- 保持目录打开状态
+        leave_dirs_open = true, -- 保持目录打开状态
       },
       follow_symlinks = true, -- 设置为 true，以便跟踪符号链接
       use_libuv_file_watcher = true,
@@ -27,6 +27,13 @@ return {
         nowait = true,
       },
     },
+    buffers = {
+      follow_current_file = {
+        enabled = true, -- This will find and focus the file in the active buffer every time
+         --              -- the current file is changed while the tree is open.
+        leave_dirs_open = false, -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
+     },
+   },
     -- 使文件图标颜色更加丰富
     default_component_configs = {
       icon = {
