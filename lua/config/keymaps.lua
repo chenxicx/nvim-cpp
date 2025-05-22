@@ -55,6 +55,28 @@ end
 -- 添加终端模式下粘贴快捷键 Ctrl+Shift+V
 vim.keymap.set("t", "<C-S-v>", "<C-\\><C-N>\"+pi", { noremap = true, silent = true, desc = "从系统剪贴板粘贴" })
 
+-- 添加快捷键将当前搜索结果填充到 Quickfix 列表
+vim.keymap.set("n", "<leader>sL", function()
+  local last_search = vim.fn.getreg('/')
+  if last_search == "" or last_search == vim.NIL then
+    vim.notify("没有最近的搜索模式可供列表显示", vim.log.levels.WARN)
+    return
+  end
+  -- 为 vimgrep 转义搜索模式中的 /
+  local pattern = vim.fn.substitute(last_search, '/', '\\/', 'g')
+  -- 使用 vimgrep 查找匹配项并填充 Quickfix 列表，不自动跳转到第一个匹配 (j flag)
+  -- silent! 避免在没有匹配时 vimgrep 可能产生的错误或消息 (尽管通常它只是不填充列表)
+  vim.cmd("silent! vimgrep /" .. pattern .. "/gj %")
+  -- 获取 Quickfix 列表
+  local qf_list = vim.fn.getqflist()
+  if #qf_list > 0 then
+    vim.cmd("copen") -- 打开 Quickfix 窗口
+    vim.notify("搜索结果已填充到 Quickfix 列表 (" .. #qf_list .. " 项)", vim.log.levels.INFO)
+  else
+    vim.notify("在当前文件中未找到与 '" .. last_search .. "' 匹配的结果", vim.log.levels.INFO)
+  end
+end, { desc = "用 Quickfix 列表显示当前搜索结果" })
+
 -- 添加格式化选中代码的快捷键
 vim.keymap.set("v", "<leader>cf", function()
   local start_row, _ = unpack(vim.api.nvim_buf_get_mark(0, "<"))
