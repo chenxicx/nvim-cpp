@@ -15,34 +15,45 @@ end, { desc = "打开 lazygit" })
 vim.api.nvim_set_keymap("n", [[<C-\>]], [[:lua ToggleTerminal()<CR>]], { noremap = true, silent = true, desc = "打开/折叠终端" })
 vim.api.nvim_set_keymap("t", [[<C-\>]], [[<C-\><C-n>:lua ToggleTerminal()<CR>]], { noremap = true, silent = true, desc = "打开/折叠终端" })
 
--- 定义终端切换函数
 function _G.ToggleTerminal()
   -- 检查是否有终端缓冲区存在
-  local terminal_bufnr = nil
+  local term_bufnr = nil
   for _, buf in ipairs(vim.api.nvim_list_bufs()) do
     if vim.bo[buf].buftype == "terminal" then
-      terminal_bufnr = buf
+      term_bufnr = buf
       break
     end
   end
-  
+
   -- 检查当前缓冲区是否为终端
-  if vim.bo.buftype == "terminal" then
-    -- 如果在终端中，则隐藏终端
+  if vim.bo[vim.api.nvim_get_current_buf()].buftype == "terminal" then
+    -- 如果在终端中，则隐藏终端，并尝试切换到上一个窗口
     vim.cmd("hide")
   else
-    if terminal_bufnr then
-      -- 如果已有终端，则显示它
-      vim.cmd("botright 15sp")
-      vim.api.nvim_set_current_buf(terminal_bufnr)
-      vim.cmd("startinsert")
+    -- 如果当前不在终端中
+    if term_bufnr then
+      -- 如果已有终端缓冲区存在
+      local term_win_id = vim.fn.bufwinid(term_bufnr)
+      if term_win_id ~= -1 and vim.api.nvim_win_is_valid(term_win_id) then
+        -- 终端窗口已存在且可见，则切换到该窗口
+        vim.api.nvim_set_current_win(term_win_id)
+      else
+        -- 终端缓冲区存在但隐藏或窗口无效，则在新的底部拆分窗口中打开它
+        vim.cmd("botright 15split")
+        vim.api.nvim_win_set_buf(0, term_bufnr) -- 将当前新窗口的缓冲区设置为终端缓冲区
+      end
+      vim.cmd("startinsert") -- 进入终端模式
     else
       -- 如果不存在终端，则创建新终端
-      vim.cmd("botright 15sp | term")
-      vim.cmd("startinsert")
+      vim.cmd("botright 15split")
+      vim.cmd("terminal") -- 在新拆分窗口中打开终端
+      vim.cmd("startinsert") -- 进入终端模式
     end
   end
 end
+
+-- 添加终端模式下粘贴快捷键 Ctrl+Shift+V
+vim.keymap.set("t", "<C-S-v>", "<C-\\><C-N>\"+pi", { noremap = true, silent = true, desc = "从系统剪贴板粘贴" })
 
 -- 添加格式化选中代码的快捷键
 vim.keymap.set("v", "<leader>cf", function()

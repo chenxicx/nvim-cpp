@@ -13,6 +13,15 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   pattern = "*.log",
   group = "LogFileHighlights",
   callback = function()
+    -- 关于高亮范围的说明：
+    -- 1. `vim.fn.matchadd` 定义的高亮规则会应用于当前窗口的整个缓冲区。
+    -- 2. Neovim 的显示引擎仅渲染（绘制）屏幕上当前可见部分的高亮。
+    --    这意味着即使规则应用于整个缓冲区，实际的绘制开销仅限于可见区域。
+    -- 3. 如果主要担忧的是在超大文件中模式匹配本身的性能（而非渲染），
+    --    `matchadd` 仍可能检查超出可见区域的文本。
+    --    要将匹配过程也严格限制于可见行，需要更复杂的方案（如监听滚动事件并使用 `matchaddpos`）。
+    --    当前配置为简洁起见，依赖 Neovim 的默认行为。
+
     vim.api.nvim_set_hl(0, "LogAwayFromRestriction", { bg = "#83A598" }) -- blue background
     vim.fn.matchadd("LogAwayFromRestriction", [[.*away_from_restriction_area.*]])
 
