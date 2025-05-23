@@ -9,6 +9,11 @@
 
 vim.api.nvim_create_augroup("LogFileHighlights", { clear = true })
 
+vim.cmd("colorscheme tokyonight-night")
+
+-- let jj exit inert mode
+vim.api.nvim_set_keymap('i', 'jj', '<Esc>', { noremap = true })
+
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   pattern = "*.log",
   group = "LogFileHighlights",
