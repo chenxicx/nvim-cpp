@@ -47,9 +47,11 @@ return {
             color_correction = nil,
             navic_opts = nil
           },
-          cmake_status
+          --{
+          --  cmake_status
+          --}
         },
-        lualine_x = {'copilot', 'encoding', 'fileformat', 'filetype'},
+        lualine_x = {cmake_status(), 'copilot', 'encoding', 'fileformat', 'filetype'},
         lualine_y = {'progress'},
         lualine_z = {'location'}
       },

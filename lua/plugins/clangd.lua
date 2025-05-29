@@ -39,6 +39,8 @@ return {
               new_root_dir .. "/out/Debug/compile_commands.json",
               new_root_dir .. "/out/Release/compile_commands.json",
               new_root_dir .. "/vs-build/compile_commands.json",
+              new_root_dir .. "/vs-build/Release/compile_commands.json",
+              new_root_dir .. "/vs-build/Debug/compile_commands.json",
               new_root_dir .. "/build/compile_commands.json",
               new_root_dir .. "/Build/compile_commands.json",
               new_root_dir .. "/cmake-build-debug/compile_commands.json",
