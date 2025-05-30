@@ -1,19 +1,13 @@
 return
- {
-    'jedrzejboczar/possession.nvim',
-    dependencies = {
-      'nvim-lua/plenary.nvim'
-    },
+{
+  'rmagatti/auto-session',
+  lazy = false,
 
-    config = function()
-      require('possession').setup {
-        commands = {
-          save = 'SSave',
-          load = 'SLoad',
-          delete = 'SDelete',
-          list = 'SList'
-        }
-      }
-    end
+  ---enables autocomplete for opts
+  ---@module "auto-session"
+  ---@type AutoSession.Config
+  opts = {
+    suppressed_dirs = { '~/', '~/Projects', '~/Downloads', '/' },
+    -- log_level = 'debug',
+  }
 }
-
