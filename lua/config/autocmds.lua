@@ -41,3 +41,18 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
     vim.fn.matchadd("Log_requestSyncedGlobalMapAndOdom", [[.*requestSyncedGlobalMapAndOdom.*]])
   end,
 })
+
+vim.api.nvim_create_autocmd("User", {
+    pattern = "SessionLoadPost",
+    callback = function()
+        print("[SessionLoadPost] 检测到会话加载完成，正在重新初始化 cmake-tools...")
+        local ok, ct = pcall(require, "cmake-tools")
+        if ok then
+            ct.detect_project_root()
+            print("[SessionLoadPost] cmake-tools 项目根目录已重新检测。")
+        else
+            print("[SessionLoadPost ERROR] 无法加载 cmake-tools: " .. ct)
+        end
+    end,
+    desc = "重新检测 CMake 项目根目录并打印日志",
+})

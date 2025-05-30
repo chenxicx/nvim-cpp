@@ -40,9 +40,7 @@ return {
               readonly = '[RO]',
               unnamed = '[No Name]',
               newfile = '[New]',
-            }
-          },
-          {
+            },
             cmake_status
           }
         },
