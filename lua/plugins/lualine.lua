@@ -43,39 +43,14 @@ return {
             }
           },
           {
-            'navic',  -- Show current function/scope with navic plugin
-            color_correction = nil,
-            navic_opts = nil
-          },
-          --{
-          --  cmake_status
-          --}
+            cmake_status
+          }
         },
-        lualine_x = {cmake_status(), 'copilot', 'encoding', 'fileformat', 'filetype'},
+        lualine_x = {'copilot', 'encoding', 'fileformat', 'filetype'},
         lualine_y = {'progress'},
         lualine_z = {'location'}
       },
     }
-  end,
-  dependencies = {
-    "SmiteshP/nvim-navic",  -- Add dependency for function display
-  },
-  config = function(_, opts)
-    require('lualine').setup(opts)
-    
-    -- Setup navic for showing function context
-    local navic = require("nvim-navic")
-    navic.setup({
-      lsp = {
-        auto_attach = true,
-        preference = nil,
-      },
-      highlight = false,
-      separator = " > ",
-      depth_limit = 0,
-      depth_limit_indicator = "..",
-      safe_output = true
-    })
-  end,
+  end
 }
 

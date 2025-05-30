@@ -3,11 +3,12 @@ return
   "chenxicx/onedarkpro.nvim",
   priority = 1000, -- Ensure it loads first
   config = function()
-    require("onedarkpro").setup({
+    vim.cmd("colorscheme catppuccin-mocha") -- 设置默认主题为 catppuccin-macchiato
+    --[[require("onedarkpro").setup({
       options = {
         transparency = false, -- 如果您需要透明背景，可以设置为 true
       }
-    })
+    })]]--
   end,
 }
 --[[{
