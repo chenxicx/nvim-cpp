@@ -1,0 +1,46 @@
+{
+  "vscode-neovim.neovimExecutablePaths.linux": "/usr/bin/nvim",
+  "vscode-neovim.neovimInitVimPaths.linux": "/home/xichen/.config/nvim/init.lua",
+  
+  "editor.semanticHighlighting.enabled": false,
+  
+  "[markdown]": {
+    "editor.unicodeHighlight.ambiguousCharacters": false,
+    "editor.unicodeHighlight.invisibleCharacters": false
+  },
+  "[plaintext]": {
+    "editor.unicodeHighlight.ambiguousCharacters": false,
+    "editor.unicodeHighlight.invisibleCharacters": false
+  },
+  
+  "editor.unicodeHighlight.allowedCharacters": {
+    "，": true,
+    "。": true,
+    "「": true,
+    "」": true,
+    "：": true,
+    "；": true,
+    "！": true,
+    "？": true,
+    "（": true,
+    "）": true,
+    "【": true,
+    "】": true,
+    "《": true,
+    "》": true,
+    "——": true,
+    "……": true,
+    "\u2018": true,
+    "\u2019": true,
+    "\u201C": true,
+    "\u201D": true,
+    "、": true
+  },
+  "editor.unicodeHighlight.allowedLocales": {
+    "zh-hans": true,
+    "zh-hant": true,
+    "ja": true,
+    "ko": true
+  },
+  "editor.unicodeHighlight.nonBasicASCII": false
+}

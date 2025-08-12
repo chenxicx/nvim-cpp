@@ -4,6 +4,16 @@
 
 if vim.g.vscode then
     -- VSCode extension
+    -- 设置编码为utf-8，避免中文显示问题
+    vim.opt.encoding = "utf-8"
+    vim.opt.fileencoding = "utf-8"
+    
+    -- 禁用VSCode中的Neovim语法检查，避免中文被标记为问题
+    vim.opt.spell = false
+    
+    -- 防止中文字符被识别为语法错误
+    vim.g.loaded_matchparen = 1
+    vim.g.loaded_syntax_completion = 1
 else
     -- 禁用相对行号，只使用绝对行号
     vim.opt.relativenumber = false
